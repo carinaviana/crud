@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Boot Example</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(aluno)}">
+        <h2>Lista alunos</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Aluno Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="aluno : ${aluno}">
+                <td th:text="${aluno.id}"><a href="/aluno/${aluno.id}">Id</a></td>
+                <td th:text="${aluno.alunoId}">Aluno Id</td>
+                <td th:text="${aluno.nome}">nome</td>
+                <td th:text="${aluno.email}">email</td>
+                <td><a th:href="${ '/aluno/' + aluno.id}">View</a></td>
+                <td><a th:href="${'/aluno/edit/' + aluno.id}">Edit</a></td>
+                <td><a th:href="${'/aluno/delete/' + aluno.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
